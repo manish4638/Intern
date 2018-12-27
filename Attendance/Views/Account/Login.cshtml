@@ -1,0 +1,55 @@
+﻿@model Attendance.Models.Viewmodel.Loginviewmodel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="/Content/home.css" rel="stylesheet" id="bootstrap-css">
+</head>
+
+<body id="LoginForm">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <h1 class="form-heading" style="text-align:center">NepaSoft HRMIS</h1>
+            <div class="login-form">
+                
+                <div class="main-div">
+                    <div class="panel">
+                        <p style="font-size:20px">Please enter your Email and password</p>
+                        <label id=" stime"></label>
+                    </div>
+                    @Html.ValidationSummary(true)
+                    <div>
+                        <div class="form-group">                            
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email Address" })
+                           @* @Html.ValidationMessageFor(model => model.Email)*@
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                            @*@Html.ValidationMessageFor(model => model.Password)*@
+                        </div>
+                        <div class="forgot">
+                            @*@Html.ActionLink("mail", "Page_Load", "payment", new { pid=1})
+                            @Html.ActionLink("Approved", "Page_Load", "payment")*@
+                            <a href="/Account/ForgotPassword" style="text-align:left">Forgot password?</a>
+                        </div>
+                        <input type="submit" value="Sign In" class="btn btn-primary" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+</body>
+</html>

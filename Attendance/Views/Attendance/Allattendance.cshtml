@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Attendance.Models.ATTENDANCE>
+
+@{
+    ViewBag.Title = "Allattendance";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>Allattendance</h2>
+
+    @*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ATTEND_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGIN_TIME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGOUT_TIME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SHIFT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTAL_TIME)
+            </th>
+            @*<th></th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ATTEND_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGIN_TIME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGOUT_TIME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SHIFT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTAL_TIME)
+                </td>
+                @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+            </tr>
+        }
+
+    </table>
+</div>

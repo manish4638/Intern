@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Attendance.Models.Viewmodel.leavedaysViewmodel>
+
+@{
+    ViewBag.Title = "Adminleavedays";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>Adminleavedays</h2>
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LDID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LEAVETYPE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DAYS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DAYS_OFF)
+            </th>
+            @*<th></th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LDID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LEAVETYPE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DAYS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DAYS_OFF)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+</div>

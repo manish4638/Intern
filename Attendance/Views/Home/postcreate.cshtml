@@ -1,0 +1,61 @@
+﻿@model Attendance.Models.POST_LIST
+
+@{
+    ViewBag.Title = "postcreate";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+
+
+            <h2>postcreate</h2>
+
+            @using (Html.BeginForm("postcreate", "home"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>POST_LIST</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.POST, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.POST)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.POST, new { @class = "form-control" })
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BASIC_SALARY, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.BASIC_SALARY)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.BASIC_SALARY, new { @class = "form-control" })                            
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.POID, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.POID)
+                                @Html.ValidationMessageFor(model => model.POID)
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                <input type="button" value="cancel" class="btn btn-default" onclick="location.href='@Url.Action("postlst", "Home")'" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+﻿@model Attendance.Models.Viewmodel.ManageEmployeeViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>Edit</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>ManageEmployeeViewModel</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EID, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.EID, new { @readonly = "readonly" ,@class="form-control"})
+                            @Html.ValidationMessageFor(model => model.EID)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FULL_NAME, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.FULL_NAME)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.FULL_NAME, new { @class = "form-control" })
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ADDRESS, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.ADDRESS)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.ADDRESS, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CONTACT, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.CONTACT)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.CONTACT, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GENDER, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.GENDER)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.GENDER, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EMAIL, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.EMAIL)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control" ,@readonly="readonly"})
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.PASSCODE, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.PASSCODE)
+                                @Html.ValidationMessageFor(model => model.PASSCODE)
+                            </div>
+                        </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ROLENAME, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.ROLENAME)
+                        <div class="col-md-10">
+                           @Html.DropDownListFor(model => model.ROLENAME, ViewBag.Rolelist as SelectList, Model.ROLENAME, new { @class = "form-control" })
+                            @*@Html.TextBoxFor(model => model.ROLENAME, new { @class = "form-control" })*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.POST, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.POST)
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.POST, ViewBag.Postlist as SelectList,Model.POST, new { @class = "form-control"})
+                            @*@Html.TextBoxFor(model => model.POST, new { @class = "form-control" })*@ 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR1, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR1)
+                        @Html.DropDownListFor(model => model.SUPERVISOR1, ViewBag.supvlist as SelectList, Model.SUPERVISOR1, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR2, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR2)
+                        @Html.DropDownListFor(model => model.SUPERVISOR2, ViewBag.supvlist as SelectList, Model.SUPERVISOR2, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR3, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR3)
+                        @Html.DropDownListFor(model => model.SUPERVISOR3, ViewBag.supvlist as SelectList, Model.SUPERVISOR3, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR4, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR4)
+                        @Html.DropDownListFor(model => model.SUPERVISOR4, ViewBag.supvlist as SelectList, Model.SUPERVISOR4, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR5, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR5)
+                        @Html.DropDownListFor(model => model.SUPERVISOR5, ViewBag.supvlist as SelectList, Model.SUPERVISOR5, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" style="font-size: 18px">                                
+                                
+                                <img src="~/Images/Icon/add_cancel_delete_edit_guardar_refresh_save_icon_24.png" />
+                                <span>Save</span>
+                            </button>
+                            @*<input type="submit" value="Save" class="btn btn-default" />*@
+                        </div>
+                    </div>
+                </div>
+            }
+            <div>
+                @Html.ActionLink("Cancel", "list")
+            </div>
+        </div>
+</div>
+</div>

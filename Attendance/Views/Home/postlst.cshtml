@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Attendance.Models.POST_LIST>
+
+@{
+    ViewBag.Title = "postlst";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>postlst</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "postcreate")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.POST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BASIC_SALARY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.POID)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.POST)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BASIC_SALARY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.POID)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    @Html.ActionLink("Delete", "postDelete","home", new { id = item.POID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@if (ViewBag.alert != null)
+{
+    <script>alert('@ViewBag.alert');</script>
+}

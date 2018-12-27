@@ -1,0 +1,83 @@
+﻿@model Attendance.Models.ALLOWANCE
+
+@{
+    ViewBag.Title = "AllowanceEdit";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>AllowanceEdit</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>ALLOWANCE</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.POST, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.POST)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.POST, new { @readonly="readonly",@class="form-control"})
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.WOH, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.WOH)
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.WOH, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.WONS, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.WONS)
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.WONS, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MEAL_ALLOWANCE, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.MEAL_ALLOWANCE)
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MEAL_ALLOWANCE, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AID, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.AID)
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AID, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.WOSH, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.WOSH)
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.WOSH, new { @class = "form-control" })
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+</div>
+</div>

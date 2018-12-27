@@ -1,0 +1,77 @@
+﻿@model Attendance.Models.ROLE
+
+@{
+    ViewBag.Title = "rolelst";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>rolelst</h2>
+
+            @using (Html.BeginForm("rolecrt", "home"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>ROLE</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ROLENAME, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.ROLENAME)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.ROLENAME, new { @class = "form-control" })
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            
+            @*------------------------------list of roles----------------------------------*@
+            <div>
+                <table>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Roles
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach(var item in ViewBag.rolelist)
+                    {
+                        <tr>
+                            <td>
+                                @item.ROLEID
+                            </td>
+                            <td>
+                                @item.ROLENAME
+                            </td>
+                            <td>
+                            @using (Html.BeginForm("roledel", "Home", new { id = item.ROLEID }))
+                            {
+                                <input type="submit" value="Delete" class="btn btn-default" />
+                            }
+                            </td>
+                        </tr>                        
+                    }
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+@if (ViewBag.alert != null)
+{
+    <script>alert('@ViewBag.alert');</script>
+}

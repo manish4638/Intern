@@ -1,0 +1,116 @@
+﻿@model Attendance.Models.Viewmodel.ManageEmployeeViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+
+        
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>ManageEmployeeViewModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EID):
+
+                @Html.DisplayFor(model => model.EID)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.FULL_NAME):
+
+                @Html.DisplayFor(model => model.FULL_NAME)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.ADDRESS):
+
+                @Html.DisplayFor(model => model.ADDRESS)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.CONTACT):
+
+                @Html.DisplayFor(model => model.CONTACT)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.GENDER):
+
+                @Html.DisplayFor(model => model.GENDER)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.EMAIL):
+
+                @Html.DisplayFor(model => model.EMAIL)
+            </dt>
+            <br />
+            @*<dt>
+            @Html.DisplayNameFor(model => model.PASSCODE)
+
+            @Html.DisplayFor(model => model.PASSCODE)
+        </dt>*@
+            <dt>
+                @Html.DisplayNameFor(model => model.ROLENAME):
+
+                @Html.DisplayFor(model => model.ROLENAME)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.POST):
+
+                @Html.DisplayFor(model => model.POST)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.SUPERVISOR1):
+
+                @Html.DisplayFor(model => model.SUPERVISOR1)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.SUPERVISOR2):
+
+                @Html.DisplayFor(model => model.SUPERVISOR2)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.SUPERVISOR3):
+
+                @Html.DisplayFor(model => model.SUPERVISOR3)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.SUPERVISOR4):
+
+                @Html.DisplayFor(model => model.SUPERVISOR4)
+            </dt>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.SUPERVISOR5):
+
+                @Html.DisplayFor(model => model.SUPERVISOR5)
+            </dt>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,75 @@
+﻿@model Attendance.Models.WORK_IN_OUT
+
+@{
+    ViewBag.Title = "workout";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>workout</h2>
+
+            @using (Html.BeginForm("workout", "Attendance"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>WORK_IN_OUT</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    @*
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IN_OUT_ID, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.IN_OUT_ID)
+                                @Html.ValidationMessageFor(model => model.IN_OUT_ID)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EID, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.EID)
+                                @Html.ValidationMessageFor(model => model.EID)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OUT_ON_WORK, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OUT_ON_WORK)
+                                @Html.ValidationMessageFor(model => model.OUT_ON_WORK)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.RETURN_INSIDE, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.RETURN_INSIDE)
+                                @Html.ValidationMessageFor(model => model.RETURN_INSIDE)
+                            </div>
+                        </div>
+                    *@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.REASON, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.REASON)
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.REASON, new { @class="form-control"})
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+</div>
+</div>

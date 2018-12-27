@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Attendance.Models.ATTENDANCE_CLAIM>
+
+@{
+    ViewBag.Title = "claim";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>claim</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CAID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGIN_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGIN_TIME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGOUT_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGOUT_TIME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REASON)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STATUS)
+            </th>
+            @*<th></th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CAID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGIN_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGIN_TIME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGOUT_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGOUT_TIME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REASON)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.STATUS)
+                </td>
+                @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+            </tr>
+        }
+
+    </table>
+</div>

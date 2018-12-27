@@ -1,0 +1,93 @@
+﻿@model Attendance.Models.REPORTTOSUPERVISOR
+
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+@{
+    string SP1 = ViewBag.supvlist.SUPERVISOR1;
+    string SP2 = ViewBag.supvlist.SUPERVISOR2;
+    string SP3 = ViewBag.supvlist.SUPERVISOR3;
+    string SP4 = ViewBag.supvlist.SUPERVISOR4;
+    string SP5 = ViewBag.supvlist.SUPERVISOR5;
+}
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>Report</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>REPORT TO SUPERVISOR</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+
+                    @*@*<div class="form-group">
+                            @Html.LabelFor(model => model.RTSID, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.RTSID)
+                                @Html.ValidationMessageFor(model => model.RTSID)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EMAIL, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.EMAIL)
+                                @Html.ValidationMessageFor(model => model.EMAIL)
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        
+                        @Html.LabelFor(model => model.SUPERVISOR, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR)
+                        <div class="col-md-10">
+                            <div class="col-md-10">
+
+                                @Html.RadioButtonFor(model => model.SUPERVISOR, value: SP1)<span> @SP1</span>
+                                <br />
+                                @Html.RadioButtonFor(model => model.SUPERVISOR, value: SP2)<span> @SP2</span>
+                                <br />
+                                @Html.RadioButtonFor(model => model.SUPERVISOR, value: SP3)<span> @SP3</span>
+                                <br />
+                                @Html.RadioButtonFor(model => model.SUPERVISOR, value: SP4)<span> @SP4</span>
+                                <br />
+                                @Html.RadioButtonFor(model => model.SUPERVISOR, value: SP5)<span> @SP5</span>
+                                <br />
+                            </div>
+                            @*@Html.EditorFor(model => model.SUPERVISOR)*@
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MESSAGE, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.MESSAGE, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MESSAGE)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.alert != null)
+{
+    <script>alert('@ViewBag.alert');</script>
+}

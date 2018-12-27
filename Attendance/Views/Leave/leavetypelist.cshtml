@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Attendance.Models.LEAVES_TYPES>
+
+@{
+    ViewBag.Title = "leavetypelist";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>leavetypelist</h2>
+
+    <input type="button" value="Create" class="btn btn-default" onclick="location.href='@Url.Action("createleavetype", "leave")'" /> 
+ 
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LTID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LEAVE_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DAYS_OFF)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LTID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LEAVE_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DAYS_OFF)
+                </td>
+                <td>
+                   
+                    <input type="button" value="Edit" class="btn btn-default" onclick="location.href='@Url.Action("editleavetype", "leave", new { ltid = item.LTID })'" />
+                                      
+                    @using (Html.BeginForm("delleavetype", "Leave", new { ltid = item.LTID }))
+                    {
+                        <input type="submit" value="Delete" class="btn btn-default" />
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

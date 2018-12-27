@@ -1,0 +1,82 @@
+﻿@model Attendance.Models.EMPLOYEE
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>EMPLOYEE</h4>
+    	<hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FULL_NAME)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FULL_NAME)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ADDRESS)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ADDRESS)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CONTACT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CONTACT)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GENDER)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GENDER)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EMAIL)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PASSCODE)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PASSCODE)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

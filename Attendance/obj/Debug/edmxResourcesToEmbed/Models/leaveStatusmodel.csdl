@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model123" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LEAVESTATU">
+    <Key>
+      <PropertyRef Name="LSID" />
+    </Key>
+    <Property Name="LSID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LEAVE" Relationship="Model123.CONSTRAINT3" FromRole="LEAVESTATU" ToRole="LEAVE" />
+  </EntityType>
+  <EntityContainer Name="leaveEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LEAVESTATUS" EntityType="Self.LEAVESTATU" />
+    <EntitySet Name="ALLOWANCEs" EntityType="Model123.ALLOWANCE" />
+    <EntitySet Name="ATTENDANCEs" EntityType="Model123.ATTENDANCE" />
+    <EntitySet Name="EMPLOYEEs" EntityType="Model123.EMPLOYEE" />
+    <EntitySet Name="EMPLOYEE_POST" EntityType="Model123.EMPLOYEE_POST" />
+    <EntitySet Name="HOLIDAY_LIST" EntityType="Model123.HOLIDAY_LIST" />
+    <EntitySet Name="LEAVEs" EntityType="Model123.LEAVE" />
+    <EntitySet Name="PAYOUTs" EntityType="Model123.PAYOUT" />
+    <EntitySet Name="POST_LIST" EntityType="Model123.POST_LIST" />
+    <EntitySet Name="ROLES" EntityType="Model123.ROLE" />
+    <EntitySet Name="USERROLES" EntityType="Model123.USERROLE" />
+    <EntitySet Name="WORK_IN_OUT" EntityType="Model123.WORK_IN_OUT" />
+    <AssociationSet Name="SYS_C0010811" Association="Model123.SYS_C0010811">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="ATTENDANCE" EntitySet="ATTENDANCEs" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010806" Association="Model123.SYS_C0010806">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="EMPLOYEE_POST" EntitySet="EMPLOYEE_POST" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010809" Association="Model123.SYS_C0010809">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="LEAVE" EntitySet="LEAVEs" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010813" Association="Model123.SYS_C0010813">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="WORK_IN_OUT" EntitySet="WORK_IN_OUT" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010817" Association="Model123.SYS_C0010817">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="PAYOUT" EntitySet="PAYOUTs" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010821" Association="Model123.SYS_C0010821">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="USERROLE" EntitySet="USERROLES" />
+    </AssociationSet>
+    <AssociationSet Name="CONSTRAINT3" Association="Model123.CONSTRAINT3">
+      <End Role="LEAVE" EntitySet="LEAVEs" />
+      <End Role="LEAVESTATU" EntitySet="LEAVESTATUS" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010820" Association="Model123.SYS_C0010820">
+      <End Role="ROLE" EntitySet="ROLES" />
+      <End Role="USERROLE" EntitySet="USERROLES" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ALLOWANCE">
+    <Key>
+      <PropertyRef Name="AID" />
+    </Key>
+    <Property Name="POST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="WOH" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="WONS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="MEAL_ALLOWANCE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="AID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="ATTENDANCE">
+    <Key>
+      <PropertyRef Name="AID" />
+    </Key>
+    <Property Name="AID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ATTEND_DATE" Type="DateTime" />
+    <Property Name="LOGIN_TIME" Type="DateTime" Precision="6" />
+    <Property Name="LOGOUT_TIME" Type="DateTime" Precision="6" />
+    <Property Name="SHIFT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TOTAL_TIME" Type="DateTime" Precision="6" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Model123.SYS_C0010811" FromRole="ATTENDANCE" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EID" />
+    </Key>
+    <Property Name="EID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="FULL_NAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PASSCODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ATTENDANCEs" Relationship="Model123.SYS_C0010811" FromRole="EMPLOYEE" ToRole="ATTENDANCE" />
+    <NavigationProperty Name="EMPLOYEE_POST" Relationship="Model123.SYS_C0010806" FromRole="EMPLOYEE" ToRole="EMPLOYEE_POST" />
+    <NavigationProperty Name="LEAVEs" Relationship="Model123.SYS_C0010809" FromRole="EMPLOYEE" ToRole="LEAVE" />
+    <NavigationProperty Name="WORK_IN_OUT" Relationship="Model123.SYS_C0010813" FromRole="EMPLOYEE" ToRole="WORK_IN_OUT" />
+    <NavigationProperty Name="PAYOUTs" Relationship="Model123.SYS_C0010817" FromRole="EMPLOYEE" ToRole="PAYOUT" />
+    <NavigationProperty Name="USERROLES" Relationship="Model123.SYS_C0010821" FromRole="EMPLOYEE" ToRole="USERROLE" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE_POST">
+    <Key>
+      <PropertyRef Name="EPOID" />
+    </Key>
+    <Property Name="EPOID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="POST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Model123.SYS_C0010806" FromRole="EMPLOYEE_POST" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="HOLIDAY_LIST">
+    <Key>
+      <PropertyRef Name="HID" />
+    </Key>
+    <Property Name="HID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="H_DATE" Type="DateTime" />
+    <Property Name="OCCATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LEAVE">
+    <Key>
+      <PropertyRef Name="LID" />
+    </Key>
+    <Property Name="LID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LEAVE_TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="FROM_DATE" Type="DateTime" />
+    <Property Name="TO_DATE" Type="DateTime" />
+    <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="REASON" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Model123.SYS_C0010809" FromRole="LEAVE" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="LEAVESTATUS" Relationship="Model123.CONSTRAINT3" FromRole="LEAVE" ToRole="LEAVESTATU" />
+  </EntityType>
+  <EntityType Name="PAYOUT">
+    <Key>
+      <PropertyRef Name="PID" />
+    </Key>
+    <Property Name="PID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="PAY_MONTH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="WOH_DAY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="NIGHT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TOTAL_SALARY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LEAVE_DAYS" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Model123.SYS_C0010817" FromRole="PAYOUT" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="POST_LIST">
+    <Key>
+      <PropertyRef Name="POID" />
+    </Key>
+    <Property Name="POST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BASIC_SALARY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="POID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="ROLEID" />
+    </Key>
+    <Property Name="ROLEID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="ROLENAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USERROLES" Relationship="Model123.SYS_C0010820" FromRole="ROLE" ToRole="USERROLE" />
+  </EntityType>
+  <EntityType Name="USERROLE">
+    <Key>
+      <PropertyRef Name="USERROLESID" />
+    </Key>
+    <Property Name="USERROLESID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="ROLEID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Model123.SYS_C0010821" FromRole="USERROLE" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="ROLE" Relationship="Model123.SYS_C0010820" FromRole="USERROLE" ToRole="ROLE" />
+  </EntityType>
+  <EntityType Name="WORK_IN_OUT">
+    <Key>
+      <PropertyRef Name="IN_OUT_ID" />
+    </Key>
+    <Property Name="IN_OUT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OUT_ON_WORK" Type="DateTime" Precision="6" />
+    <Property Name="RETURN_INSIDE" Type="DateTime" Precision="6" />
+    <Property Name="REASON" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Model123.SYS_C0010813" FromRole="WORK_IN_OUT" ToRole="EMPLOYEE" />
+  </EntityType>
+  <Association Name="SYS_C0010811">
+    <End Type="Model123.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="Model123.ATTENDANCE" Role="ATTENDANCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EID" />
+      </Principal>
+      <Dependent Role="ATTENDANCE">
+        <PropertyRef Name="EID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010806">
+    <End Type="Model123.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="Model123.EMPLOYEE_POST" Role="EMPLOYEE_POST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EID" />
+      </Principal>
+      <Dependent Role="EMPLOYEE_POST">
+        <PropertyRef Name="EID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010809">
+    <End Type="Model123.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="Model123.LEAVE" Role="LEAVE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EID" />
+      </Principal>
+      <Dependent Role="LEAVE">
+        <PropertyRef Name="EID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010813">
+    <End Type="Model123.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="Model123.WORK_IN_OUT" Role="WORK_IN_OUT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EID" />
+      </Principal>
+      <Dependent Role="WORK_IN_OUT">
+        <PropertyRef Name="EID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010817">
+    <End Type="Model123.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="Model123.PAYOUT" Role="PAYOUT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EID" />
+      </Principal>
+      <Dependent Role="PAYOUT">
+        <PropertyRef Name="EID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010821">
+    <End Type="Model123.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="Model123.USERROLE" Role="USERROLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EID" />
+      </Principal>
+      <Dependent Role="USERROLE">
+        <PropertyRef Name="EID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONSTRAINT3">
+    <End Type="Model123.LEAVE" Role="LEAVE" Multiplicity="0..1" />
+    <End Type="Model123.LEAVESTATU" Role="LEAVESTATU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LEAVE">
+        <PropertyRef Name="LID" />
+      </Principal>
+      <Dependent Role="LEAVESTATU">
+        <PropertyRef Name="LID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010820">
+    <End Type="Model123.ROLE" Role="ROLE" Multiplicity="0..1" />
+    <End Type="Model123.USERROLE" Role="USERROLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="ROLEID" />
+      </Principal>
+      <Dependent Role="USERROLE">
+        <PropertyRef Name="ROLEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Attendance.Models.PAYOUT>
+
+@{
+    ViewBag.Title = "monthlystatementgenerate";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>Generated Monthly Statement</h2>
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PAY_MONTH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WOH_DAY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WOSH_DAY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NIGHT)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.LEAVE_DAYS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WORKING_HOUR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTAL_SALARY)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PAY_MONTH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WOH_DAY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WOSH_DAY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NIGHT)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.LEAVE_DAYS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WORKING_HOUR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTAL_SALARY)
+                </td>
+                <td>                    
+                        <input type="button" value="Send Mail" class="btn btn-default" onclick="location.href='@Url.Action("payrollmail", "payment", new { pid = item.PID })'" />
+                                            
+                    </td>
+            </tr>
+        }
+
+    </table>
+</div>

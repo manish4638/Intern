@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="leavestatus">
+    <EntitySetMapping Name="LEAVESTATUS">
+      <EntityTypeMapping TypeName="Model1.LEAVESTATU">
+        <MappingFragment StoreEntitySet="LEAVESTATUS">
+          <ScalarProperty Name="LSID" ColumnName="LSID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

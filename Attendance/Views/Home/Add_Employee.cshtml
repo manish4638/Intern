@@ -1,0 +1,94 @@
+﻿@model Attendance.Models.Viewmodel.CreateEmployee
+
+@{
+    ViewBag.Title = "Add_Employee";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>Add_Employee</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>CreateEmployee</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FULL_NAME, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.FULL_NAME)
+                    @Html.ValidationMessageFor(model => model.FULL_NAME)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ADDRESS, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ADDRESS)
+                    @Html.ValidationMessageFor(model => model.ADDRESS)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CONTACT, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.CONTACT)
+                    @Html.ValidationMessageFor(model => model.CONTACT)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GENDER, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.GENDER)
+                    @Html.ValidationMessageFor(model => model.GENDER)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EMAIL, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.EMAIL)
+                    @Html.ValidationMessageFor(model => model.EMAIL)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PASSCODE, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.PASSCODE)
+                    @Html.ValidationMessageFor(model => model.PASSCODE)
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.ROLENAME, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ROLENAME)
+                    @Html.ValidationMessageFor(model => model.ROLENAME)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.POST, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.POST)
+                    @Html.ValidationMessageFor(model => model.POST)
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>

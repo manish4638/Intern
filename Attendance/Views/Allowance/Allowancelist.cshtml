@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Attendance.Models.ALLOWANCE>
+
+@{
+    ViewBag.Title = "Allowancelist";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>Allowancelist</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Allowancecreate", "Allowance") @*/*//if error put ",new{msg=""}"*/*@
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.POST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WOH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WONS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MEAL_ALLOWANCE)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.WOSH)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.POST)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WOH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WONS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MEAL_ALLOWANCE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WOSH)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "AllowanceEdit", new { id = item.AID }) |
+                    @Html.ActionLink("Delete", "Allowancedelete", new { id = item.AID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

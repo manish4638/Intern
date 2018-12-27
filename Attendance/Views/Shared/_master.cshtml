@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
+    <title>@ViewBag.Title</title>
+    
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <link href="~/Content/master.css" rel="stylesheet" />
+    <link href="~/Content/table.css" rel="stylesheet" />
+    <link href="~/Content/Changepassword.css" rel="stylesheet" />
+
+
+
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div style="height:100%;width:100%">
+
+        <div class="sidebar">
+            <div>
+                <a href="/home/schedule">Schedule</a>
+                <a href="/EmployeeManage/list">List of employees</a>
+                <a href=@Url.Action("Leave", "leave", new { msg=""})>Leave Request</a>
+                <a href=@Url.Action("leavestus", "leave")>status</a>s
+                <a href=@Url.Action("inoutsession", "Attendance")>In-Out Session</a>
+                <a href=@Url.Action("Claimattendance", "Attendance")>claim Attendance</a>
+                <a href=@Url.Action("userstatement","payment")>Attendance Statement</a>                
+                <a href=@Url.Action("Report", "Home")>Report to Supervisor</a>
+                <a href=@Url.Action("userpayoutslip", "payment")>Payment</a>
+                <a href=@Url.Action("Holidaylist", "Home")>Holiday List</a>
+            </div>
+            @if (!User.IsInRole("Staff"))
+            {
+                <div>
+                    <a href=@Url.Action("viewmsg", "home")>Your Messages</a>
+                    <a href=@Url.Action("Allattendance", "Attendance")>All Attendance</a>
+                    <a href=@Url.Action("Adminleavedays", "leave")>All Leave Days</a>
+                    <a href=@Url.Action("claimrequest", "Attendance")>Claim Requests</a>                    
+                    <a href=@Url.Action("leave_Requested", "leave")>Leave Requested</a>
+                    
+                </div>
+            }
+
+
+            @if (User.IsInRole("Admin"))
+            {
+                <div>                   
+                    <a href=@Url.Action("leavetypelist", "leave")>Leave Type</a>
+                    <a href=@Url.Action("Allowancelist", "Allowance")>Allowance List</a>
+                    <a href=@Url.Action("postlst", "home")>Post List</a>
+                    <a href=@Url.Action("Rolelst", "home")>Role List</a>
+                    <a href=@Url.Action("paymentslip", "payment")>Payment list</a>
+                    <a href=@Url.Action("allmonstatement", "payment")>All user Statement</a>
+                    <a href=@Url.Action("monthlystatementgenerate","payment")>Generated Payroll Slip</a>
+                </div>
+            }
+        </div>
+        <div class="navbar">
+            <a href="/home/schedule"><img src="/image/logo.png" class="logo" /></a>
+            <p style="font-size:1px;">Manish Shrestha</p>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <img src="~/Images/Icon/account_avatar_circle_male_profile_user_icon_32.png" />
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" style="right:0;left:auto;">
+                    <a href=@Url.Action("PersonalProfile", "Home")>Profile</a>
+                    <a href=@Url.Action("ChangePassword","Account")>Change Password</a>
+                    <hr />
+                    <a href=@Url.Action("LogOut","Account")>Logout</a>
+                </div>
+            </div>
+        </div>
+
+        @RenderBody()
+
+    </div>
+
+    </div>
+
+
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+

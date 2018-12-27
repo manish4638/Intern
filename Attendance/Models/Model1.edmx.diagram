@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6407eddeb38a44a5b2af22179f8ff3b9" Name="Diagram1" ZoomLevel="92">
+        <EntityTypeShape EntityType="Model.ALLOWANCE" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.ATTENDANCE" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="Model.ATTENDANCE_CLAIM" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="Model.EMPLOYEE" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="Model.EMPLOYEE_POST" Width="1.5" PointX="3" PointY="33.875" />
+        <EntityTypeShape EntityType="Model.HOLIDAY_LIST" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.LEAVE" Width="1.5" PointX="3" PointY="25.875" />
+        <EntityTypeShape EntityType="Model.LEAVEDAY" Width="1.5" PointX="3" PointY="23.25" />
+        <EntityTypeShape EntityType="Model.LEAVES_TYPES" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.MONTHLY_STATEMENT" Width="1.5" PointX="3" PointY="16.75" />
+        <EntityTypeShape EntityType="Model.PAYOUT" Width="1.5" PointX="3" PointY="30" />
+        <EntityTypeShape EntityType="Model.POST_LIST" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.ROLE" Width="1.5" PointX="3.75" PointY="1.25" />
+        <EntityTypeShape EntityType="Model.SUPERVISOR" Width="1.5" PointX="3" PointY="36.375" />
+        <EntityTypeShape EntityType="Model.USERROLE" Width="1.5" PointX="6" PointY="19" />
+        <EntityTypeShape EntityType="Model.WORK_IN_OUT" Width="1.5" PointX="3" PointY="13.875" />
+        <AssociationConnector Association="Model.SYS_C0010811" />
+        <AssociationConnector Association="Model.CONSTRAINT8" />
+        <AssociationConnector Association="Model.CONSTRAINT11" />
+        <AssociationConnector Association="Model.CONSTRAINT15" />
+        <AssociationConnector Association="Model.CONSTRAINT3" />
+        <AssociationConnector Association="Model.SYS_C0010806" />
+        <AssociationConnector Association="Model.SYS_C0010809" />
+        <AssociationConnector Association="Model.SYS_C0010813" />
+        <AssociationConnector Association="Model.SYS_C0010817" />
+        <AssociationConnector Association="Model.SYS_C0010821" />
+        <AssociationConnector Association="Model.SYS_C0010820" />
+        <EntityTypeShape EntityType="Model.REPORTTOSUPERVISOR" Width="1.5" PointX="0.75" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

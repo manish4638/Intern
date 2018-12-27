@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Attendance.Models.Viewmodel.leaveviewmodel>
+@{
+    ViewBag.Title = "leave_Requested";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>leave_Requested</h2>
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.NAME)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LEAVE_TYPE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REQUESTED_FROM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REQUESTED_TO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FROM_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TO_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DAYS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REASON)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COMENT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STATUS)
+            </th>            
+            <th></th>
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @*  @Html.DisplayFor(modelItem => item.NAME)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LEAVE_TYPE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REQUESTED_FROM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REQUESTED_TO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FROM_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TO_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DAYS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REASON)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.COMENT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.STATUS)
+                </td>                
+                @if (item.STATUS.ToUpper() == "UNKNOWN" && item.REQUESTED_FROM >= DateTime.Today && (item.flag == "1" || User.IsInRole("Admin")))
+                {
+                    <td>
+                        <button onclick="location.href = '@Url.Action("Approved", "leave", new { id = item.LID })'">                         
+                         
+                            <span>Approve</span>
+                        </button>
+                        <button onclick="location.href = '@Url.Action("Makeleavechanges", "leave", new { id = item.LID })'">
+                            
+                            <span>Change</span>
+                        </button>
+                        <button onclick="location.href = '@Url.Action("Declined", "leave", new { id = item.LID })'">
+                           
+                            <span>Decline</span>
+                        </button>
+                       
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>

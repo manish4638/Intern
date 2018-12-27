@@ -1,0 +1,77 @@
+﻿@model Attendance.Models.HOLIDAY_LIST
+
+@{
+    ViewBag.Title = "Holidaycreate";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+
+        $("#H_DATE").datepicker({
+
+
+        });
+
+
+
+
+
+    });
+</script>
+
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>Holidaycreate</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>HOLIDAY_LIST</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    @*
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HID, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.HID)
+                                @Html.ValidationMessageFor(model => model.HID)
+                            </div>
+                        </div>
+                    *@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.H_DATE, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.H_DATE, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.H_DATE)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OCCATION, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OCCATION, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.OCCATION)
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Holidaylist")
+            </div>
+        </div>
+</div>
+</div>

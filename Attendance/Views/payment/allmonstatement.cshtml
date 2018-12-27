@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Attendance.Models.MONTHLY_STATEMENT>
+
+@{
+    ViewBag.Title = "allmonstatement";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>allmonstatement</h2>
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MONTH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTALLEAVEDAYS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTALWORKINGHRS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTALNIGHTSHIFTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTALWOH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTALWOSH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTALMEALALLOW)
+            </th>
+            @*<th></th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MONTH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTALLEAVEDAYS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTALWORKINGHRS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTALNIGHTSHIFTS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTALWOH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTALWOSH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TOTALMEALALLOW)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+</div>

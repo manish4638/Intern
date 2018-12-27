@@ -1,0 +1,40 @@
+﻿@model Attendance.Models.Viewmodel.paymentViewModel
+
+@{
+    ViewBag.Title = "paymentslip";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>Generate Payroll-Slip</h2>
+
+        @using (Html.BeginForm("monthlystatementgenerate", "payment"))
+        {
+            @Html.AntiForgeryToken()
+            
+                <div class="form-horizontal">
+                    <h4>Month selection</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    <div>
+                        <div style="float:left;width:50%">
+                            @Html.DropDownListFor(model => model.SelectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Year", new { @class = "form-control" })
+                        </div>
+                        <div style="float:left;width:50%">
+                            @Html.DropDownListFor(model => model.SelectedMonth, (IEnumerable<SelectListItem>)ViewBag.Months, "Month", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            
+        }
+            
+
+            </div>
+   </div>
+</div>

@@ -1,0 +1,45 @@
+/* NO NEED TO GO THROUGH THIS COMMENTED SECTION
+                     ///from logout
+                    DateTime dtm= System.DateTime.Today.AddDays(1);
+                     ate.LOGOUT_TIME = dtm.AddSeconds(-1);         
+                   
+                     TimeSpan ttltim = Convert.ToDateTime(ate.LOGOUT_TIME) - Convert.ToDateTime(ate.LOGIN_TIME);
+                     string strtim = ttltim.ToString();
+                     ate.TOTAL_TIME = Convert.ToDateTime(strtim);
+                     
+
+                    //--------------------------------------------------
+                    //For monthly statment
+                    
+                    DateTime dt = Convert.ToDateTime(ate.TOTAL_TIME);
+                    string worhrs_monyr = dt.Date.ToString("MM/yyyy");                   
+
+                    double inhrs = ttltim.TotalHours;
+
+                    var ms = _db.MONTHLY_STATEMENT.Where(i => i.EID == seid && i.MONTH == worhrs_monyr).FirstOrDefault();
+                    if (ms == null)
+                    {
+                    int maxmonrecid = Convert.ToInt32(_db.MONTHLY_STATEMENT.Select(p => p.MON_REC_ID).DefaultIfEmpty(0).Max()); // reading maximum value
+                    MONTHLY_STATEMENT msi = new MONTHLY_STATEMENT();
+                    if (maxmonrecid <= 0)
+                    {
+                        maxmonrecid = 1;
+                    }
+                    else
+                    {
+                        maxmonrecid++;
+                    }
+                    msi.MON_REC_ID = maxmonrecid;
+                    // msi.EID = 1;
+                    msi.EID = seid;
+                    msi.MONTH = worhrs_monyr;
+                    msi.TOTALWORKINGHRS = System.Math.Round(Convert.ToDecimal(inhrs), 2);
+                    msi.TOTALNIGHTSHIFTS = System.Math.Round(Convert.ToDecimal(inhrs),2);
+                    _db.MONTHLY_STATEMENT.Add(msi);
+                    }
+                    else
+                    {
+                    ms.TOTALWORKINGHRS = System.Math.Round(Convert.ToDecimal(inhrs), 2);
+                    ms.TOTALNIGHTSHIFTS = ms.TOTALNIGHTSHIFTS + Convert.ToDecimal(inhrs);
+                    }
+                    */

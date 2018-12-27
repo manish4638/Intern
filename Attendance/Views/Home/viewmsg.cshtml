@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Attendance.Models.REPORTTOSUPERVISOR>
+
+@{
+    ViewBag.Title = "viewmsg";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>View Messages</h2>
+
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MESSAGE)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMAIL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MESSAGE)
+                </td>
+                <td>
+                    @using (Html.BeginForm("Deletemsg", "home"))
+                    {
+                        <input type="submit" value="Delete" class="btn btn-default" />
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

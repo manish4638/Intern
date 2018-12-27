@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="OracledbEntities">
+    <EntitySetMapping Name="ALLOWANCEs">
+      <EntityTypeMapping TypeName="Model.ALLOWANCE">
+        <MappingFragment StoreEntitySet="ALLOWANCE">
+          <ScalarProperty Name="WOSH" ColumnName="WOSH" />
+          <ScalarProperty Name="AID" ColumnName="AID" />
+          <ScalarProperty Name="MEAL_ALLOWANCE" ColumnName="MEAL_ALLOWANCE" />
+          <ScalarProperty Name="WONS" ColumnName="WONS" />
+          <ScalarProperty Name="WOH" ColumnName="WOH" />
+          <ScalarProperty Name="POST" ColumnName="POST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATTENDANCEs">
+      <EntityTypeMapping TypeName="Model.ATTENDANCE">
+        <MappingFragment StoreEntitySet="ATTENDANCE">
+          <ScalarProperty Name="LOGOUT_DATE" ColumnName="LOGOUT_DATE" />
+          <ScalarProperty Name="TOTAL_TIME" ColumnName="TOTAL_TIME" />
+          <ScalarProperty Name="SHIFT" ColumnName="SHIFT" />
+          <ScalarProperty Name="LOGOUT_TIME" ColumnName="LOGOUT_TIME" />
+          <ScalarProperty Name="LOGIN_TIME" ColumnName="LOGIN_TIME" />
+          <ScalarProperty Name="ATTEND_DATE" ColumnName="ATTEND_DATE" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="AID" ColumnName="AID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATTENDANCE_CLAIM">
+      <EntityTypeMapping TypeName="Model.ATTENDANCE_CLAIM">
+        <MappingFragment StoreEntitySet="ATTENDANCE_CLAIM">
+          <ScalarProperty Name="COMENT" ColumnName="COMENT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="REASON" ColumnName="REASON" />
+          <ScalarProperty Name="LOGOUT_TIME" ColumnName="LOGOUT_TIME" />
+          <ScalarProperty Name="LOGOUT_DATE" ColumnName="LOGOUT_DATE" />
+          <ScalarProperty Name="LOGIN_TIME" ColumnName="LOGIN_TIME" />
+          <ScalarProperty Name="LOGIN_DATE" ColumnName="LOGIN_DATE" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="CAID" ColumnName="CAID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEEs">
+      <EntityTypeMapping TypeName="Model.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+          <ScalarProperty Name="PASSCODE" ColumnName="PASSCODE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEE_POST">
+      <EntityTypeMapping TypeName="Model.EMPLOYEE_POST">
+        <MappingFragment StoreEntitySet="EMPLOYEE_POST">
+          <ScalarProperty Name="POST" ColumnName="POST" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="EPOID" ColumnName="EPOID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOLIDAY_LIST">
+      <EntityTypeMapping TypeName="Model.HOLIDAY_LIST">
+        <MappingFragment StoreEntitySet="HOLIDAY_LIST">
+          <ScalarProperty Name="OCCATION" ColumnName="OCCATION" />
+          <ScalarProperty Name="H_DATE" ColumnName="H_DATE" />
+          <ScalarProperty Name="HID" ColumnName="HID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LEAVEs">
+      <EntityTypeMapping TypeName="Model.LEAVE">
+        <MappingFragment StoreEntitySet="LEAVE">
+          <ScalarProperty Name="COMENT" ColumnName="COMENT" />
+          <ScalarProperty Name="REQUESTED_TO" ColumnName="REQUESTED_TO" />
+          <ScalarProperty Name="REQUESTED_FROM" ColumnName="REQUESTED_FROM" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="REASON" ColumnName="REASON" />
+          <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+          <ScalarProperty Name="TO_DATE" ColumnName="TO_DATE" />
+          <ScalarProperty Name="FROM_DATE" ColumnName="FROM_DATE" />
+          <ScalarProperty Name="LEAVE_TYPE" ColumnName="LEAVE_TYPE" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LEAVEDAYS">
+      <EntityTypeMapping TypeName="Model.LEAVEDAY">
+        <MappingFragment StoreEntitySet="LEAVEDAYS">
+          <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+          <ScalarProperty Name="LEAVETYPE" ColumnName="LEAVETYPE" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="LDID" ColumnName="LDID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LEAVES_TYPES">
+      <EntityTypeMapping TypeName="Model.LEAVES_TYPES">
+        <MappingFragment StoreEntitySet="LEAVES_TYPES">
+          <ScalarProperty Name="DAYS_OFF" ColumnName="DAYS_OFF" />
+          <ScalarProperty Name="LEAVE_NAME" ColumnName="LEAVE_NAME" />
+          <ScalarProperty Name="LTID" ColumnName="LTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MONTHLY_STATEMENT">
+      <EntityTypeMapping TypeName="Model.MONTHLY_STATEMENT">
+        <MappingFragment StoreEntitySet="MONTHLY_STATEMENT">
+          <ScalarProperty Name="TOTALMEALALLOW" ColumnName="TOTALMEALALLOW" />
+          <ScalarProperty Name="TOTALWOSH" ColumnName="TOTALWOSH" />
+          <ScalarProperty Name="TOTALWOH" ColumnName="TOTALWOH" />
+          <ScalarProperty Name="TOTALNIGHTSHIFTS" ColumnName="TOTALNIGHTSHIFTS" />
+          <ScalarProperty Name="TOTALWORKINGHRS" ColumnName="TOTALWORKINGHRS" />
+          <ScalarProperty Name="TOTALLEAVEDAYS" ColumnName="TOTALLEAVEDAYS" />
+          <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="MON_REC_ID" ColumnName="MON_REC_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYOUTs">
+      <EntityTypeMapping TypeName="Model.PAYOUT">
+        <MappingFragment StoreEntitySet="PAYOUT">
+          <ScalarProperty Name="WOSH_DAY" ColumnName="WOSH_DAY" />
+          <ScalarProperty Name="MEALALLOWANCE" ColumnName="MEALALLOWANCE" />
+          <ScalarProperty Name="WORKING_HOUR" ColumnName="WORKING_HOUR" />
+          <ScalarProperty Name="LEAVE_DAYS" ColumnName="LEAVE_DAYS" />
+          <ScalarProperty Name="TOTAL_SALARY" ColumnName="TOTAL_SALARY" />
+          <ScalarProperty Name="NIGHT" ColumnName="NIGHT" />
+          <ScalarProperty Name="WOH_DAY" ColumnName="WOH_DAY" />
+          <ScalarProperty Name="PAY_MONTH" ColumnName="PAY_MONTH" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POST_LIST">
+      <EntityTypeMapping TypeName="Model.POST_LIST">
+        <MappingFragment StoreEntitySet="POST_LIST">
+          <ScalarProperty Name="POID" ColumnName="POID" />
+          <ScalarProperty Name="BASIC_SALARY" ColumnName="BASIC_SALARY" />
+          <ScalarProperty Name="POST" ColumnName="POST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES">
+      <EntityTypeMapping TypeName="Model.ROLE">
+        <MappingFragment StoreEntitySet="ROLES">
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+          <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUPERVISORs">
+      <EntityTypeMapping TypeName="Model.SUPERVISOR">
+        <MappingFragment StoreEntitySet="SUPERVISOR">
+          <ScalarProperty Name="SUPERVISOR5" ColumnName="SUPERVISOR5" />
+          <ScalarProperty Name="SUPERVISOR4" ColumnName="SUPERVISOR4" />
+          <ScalarProperty Name="SUPERVISOR3" ColumnName="SUPERVISOR3" />
+          <ScalarProperty Name="SUPERVISOR2" ColumnName="SUPERVISOR2" />
+          <ScalarProperty Name="SUPERVISOR1" ColumnName="SUPERVISOR1" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERROLES">
+      <EntityTypeMapping TypeName="Model.USERROLE">
+        <MappingFragment StoreEntitySet="USERROLES">
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+          <ScalarProperty Name="USERROLESID" ColumnName="USERROLESID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WORK_IN_OUT">
+      <EntityTypeMapping TypeName="Model.WORK_IN_OUT">
+        <MappingFragment StoreEntitySet="WORK_IN_OUT">
+          <ScalarProperty Name="REASON" ColumnName="REASON" />
+          <ScalarProperty Name="RETURN_INSIDE" ColumnName="RETURN_INSIDE" />
+          <ScalarProperty Name="OUT_ON_WORK" ColumnName="OUT_ON_WORK" />
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="IN_OUT_ID" ColumnName="IN_OUT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTTOSUPERVISORs">
+      <EntityTypeMapping TypeName="Model.REPORTTOSUPERVISOR">
+        <MappingFragment StoreEntitySet="REPORTTOSUPERVISOR">
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+          <ScalarProperty Name="SUPERVISOR" ColumnName="SUPERVISOR" />
+          <ScalarProperty Name="RTSID" ColumnName="RTSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

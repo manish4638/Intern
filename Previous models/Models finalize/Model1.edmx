@@ -1,0 +1,901 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ALLOWANCE">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="POST" Type="varchar2" MaxLength="20" />
+          <Property Name="WOH" Type="number" Precision="38" Scale="0" />
+          <Property Name="WONS" Type="number" Precision="38" Scale="0" />
+          <Property Name="MEAL_ALLOWANCE" Type="number" Precision="38" Scale="0" />
+          <Property Name="AID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="WOSH" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ATTENDANCE">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="AID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+          <Property Name="ATTEND_DATE" Type="date" />
+          <Property Name="LOGIN_TIME" Type="timestamp" Precision="6" />
+          <Property Name="LOGOUT_TIME" Type="timestamp" Precision="6" />
+          <Property Name="SHIFT" Type="varchar2" MaxLength="15" />
+          <Property Name="TOTAL_TIME" Type="timestamp" Precision="6" />
+          <Property Name="LOGOUT_DATE" Type="timestamp" Precision="6" />
+        </EntityType>
+        <EntityType Name="ATTENDANCE_CLAIM">
+          <Key>
+            <PropertyRef Name="CAID" />
+          </Key>
+          <Property Name="CAID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+          <Property Name="LOGIN_DATE" Type="date" />
+          <Property Name="LOGIN_TIME" Type="timestamp" Precision="6" />
+          <Property Name="LOGOUT_DATE" Type="date" />
+          <Property Name="LOGOUT_TIME" Type="timestamp" Precision="6" />
+          <Property Name="REASON" Type="varchar2" MaxLength="50" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FULL_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="ADDRESS" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="GENDER" Type="char" MaxLength="1" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="50" />
+          <Property Name="PASSCODE" Type="varchar2" MaxLength="30" />
+          <Property Name="CONTACT" Type="long" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE_POST">
+          <Key>
+            <PropertyRef Name="EPOID" />
+          </Key>
+          <Property Name="EPOID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+          <Property Name="POST" Type="varchar2" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="HOLIDAY_LIST">
+          <Key>
+            <PropertyRef Name="HID" />
+          </Key>
+          <Property Name="HID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="H_DATE" Type="date" />
+          <Property Name="OCCATION" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="LEAVE">
+          <Key>
+            <PropertyRef Name="LID" />
+          </Key>
+          <Property Name="LID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+          <Property Name="LEAVE_TYPE" Type="varchar2" MaxLength="15" />
+          <Property Name="FROM_DATE" Type="date" />
+          <Property Name="TO_DATE" Type="date" />
+          <Property Name="DAYS" Type="number" Precision="38" Scale="0" />
+          <Property Name="REASON" Type="varchar2" MaxLength="150" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="LEAVEDAYS">
+          <Key>
+            <PropertyRef Name="LDID" />
+          </Key>
+          <Property Name="LDID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+          <Property Name="LEAVETYPE" Type="varchar2" MaxLength="20" />
+          <Property Name="DAYS" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="LEAVES_TYPES">
+          <Key>
+            <PropertyRef Name="LTID" />
+          </Key>
+          <Property Name="LTID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LEAVE_NAME" Type="varchar2" MaxLength="20" />
+          <Property Name="DAYS_OFF" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="MONTHLY_STATEMENT">
+          <Key>
+            <PropertyRef Name="MON_REC_ID" />
+          </Key>
+          <Property Name="MON_REC_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+          <Property Name="MONTH" Type="varchar2" MaxLength="20" />
+          <Property Name="TOTALLEAVEDAYS" Type="number" Precision="38" Scale="0" />
+          <Property Name="TOTALWORKINGHRS" Type="number" Precision="38" Scale="0" />
+          <Property Name="TOTALNIGHTSHIFTS" Type="number" Precision="38" Scale="0" />
+          <Property Name="TOTALWOH" Type="number" Precision="38" Scale="0" />
+          <Property Name="TOTALWOSH" Type="number" Precision="38" Scale="0" />
+          <Property Name="TOTALMEALALLOW" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="PAYOUT">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+          <Property Name="PAY_MONTH" Type="varchar2" MaxLength="10" />
+          <Property Name="WOH_DAY" Type="number" Precision="38" Scale="0" />
+          <Property Name="NIGHT" Type="number" Precision="38" Scale="0" />
+          <Property Name="TOTAL_SALARY" Type="number" Precision="38" Scale="0" />
+          <Property Name="LEAVE_DAYS" Type="number" Precision="38" Scale="0" />
+          <Property Name="WORKING_HOUR" Type="number" Precision="38" Scale="0" />
+          <Property Name="MEALALLOWANCE" Type="number" Precision="38" Scale="0" />
+          <Property Name="WOSH_DAY" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="POST_LIST">
+          <Key>
+            <PropertyRef Name="POID" />
+          </Key>
+          <Property Name="POST" Type="varchar2" MaxLength="20" />
+          <Property Name="BASIC_SALARY" Type="number" Precision="38" Scale="0" />
+          <Property Name="POID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ROLEID" />
+          </Key>
+          <Property Name="ROLEID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROLENAME" Type="varchar2" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="USERROLES">
+          <Key>
+            <PropertyRef Name="USERROLESID" />
+          </Key>
+          <Property Name="USERROLESID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROLEID" Type="number" Precision="38" Scale="0" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="WORK_IN_OUT">
+          <Key>
+            <PropertyRef Name="IN_OUT_ID" />
+          </Key>
+          <Property Name="IN_OUT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EID" Type="number" Precision="38" Scale="0" />
+          <Property Name="OUT_ON_WORK" Type="timestamp" Precision="6" />
+          <Property Name="RETURN_INSIDE" Type="timestamp" Precision="6" />
+          <Property Name="REASON" Type="long" />
+        </EntityType>
+        <Association Name="CONSTRAINT11">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="LEAVEDAYS" Type="Self.LEAVEDAYS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="LEAVEDAYS">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONSTRAINT3">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="MONTHLY_STATEMENT" Type="Self.MONTHLY_STATEMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="MONTHLY_STATEMENT">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONSTRAINT8">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="ATTENDANCE_CLAIM" Type="Self.ATTENDANCE_CLAIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="ATTENDANCE_CLAIM">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010806">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="EMPLOYEE_POST" Type="Self.EMPLOYEE_POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="EMPLOYEE_POST">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010809">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="LEAVE" Type="Self.LEAVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="LEAVE">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010811">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="ATTENDANCE" Type="Self.ATTENDANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="ATTENDANCE">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010813">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="WORK_IN_OUT" Type="Self.WORK_IN_OUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="WORK_IN_OUT">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010817">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="PAYOUT" Type="Self.PAYOUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="PAYOUT">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010820">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+          <End Role="USERROLES" Type="Self.USERROLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ROLEID" />
+            </Principal>
+            <Dependent Role="USERROLES">
+              <PropertyRef Name="ROLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010821">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="USERROLES" Type="Self.USERROLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="USERROLES">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ALLOWANCE" EntityType="Self.ALLOWANCE" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="ATTENDANCE" EntityType="Self.ATTENDANCE" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="ATTENDANCE_CLAIM" EntityType="Self.ATTENDANCE_CLAIM" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE_POST" EntityType="Self.EMPLOYEE_POST" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="HOLIDAY_LIST" EntityType="Self.HOLIDAY_LIST" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="LEAVE" EntityType="Self.LEAVE" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="LEAVEDAYS" EntityType="Self.LEAVEDAYS" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="LEAVES_TYPES" EntityType="Self.LEAVES_TYPES" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="MONTHLY_STATEMENT" EntityType="Self.MONTHLY_STATEMENT" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="PAYOUT" EntityType="Self.PAYOUT" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="POST_LIST" EntityType="Self.POST_LIST" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="USERROLES" EntityType="Self.USERROLES" Schema="ATTENDNET" store:Type="Tables" />
+          <EntitySet Name="WORK_IN_OUT" EntityType="Self.WORK_IN_OUT" Schema="ATTENDNET" store:Type="Tables" />
+          <AssociationSet Name="CONSTRAINT11" Association="Self.CONSTRAINT11">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="LEAVEDAYS" EntitySet="LEAVEDAYS" />
+          </AssociationSet>
+          <AssociationSet Name="CONSTRAINT3" Association="Self.CONSTRAINT3">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="MONTHLY_STATEMENT" EntitySet="MONTHLY_STATEMENT" />
+          </AssociationSet>
+          <AssociationSet Name="CONSTRAINT8" Association="Self.CONSTRAINT8">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="ATTENDANCE_CLAIM" EntitySet="ATTENDANCE_CLAIM" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010806" Association="Self.SYS_C0010806">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="EMPLOYEE_POST" EntitySet="EMPLOYEE_POST" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010809" Association="Self.SYS_C0010809">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="LEAVE" EntitySet="LEAVE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010811" Association="Self.SYS_C0010811">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="ATTENDANCE" EntitySet="ATTENDANCE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010813" Association="Self.SYS_C0010813">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="WORK_IN_OUT" EntitySet="WORK_IN_OUT" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010817" Association="Self.SYS_C0010817">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="PAYOUT" EntitySet="PAYOUT" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010820" Association="Self.SYS_C0010820">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USERROLES" EntitySet="USERROLES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010821" Association="Self.SYS_C0010821">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="USERROLES" EntitySet="USERROLES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OracledbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ALLOWANCEs" EntityType="Model.ALLOWANCE" />
+          <EntitySet Name="ATTENDANCEs" EntityType="Model.ATTENDANCE" />
+          <EntitySet Name="ATTENDANCE_CLAIM" EntityType="Model.ATTENDANCE_CLAIM" />
+          <EntitySet Name="EMPLOYEEs" EntityType="Model.EMPLOYEE" />
+          <EntitySet Name="EMPLOYEE_POST" EntityType="Model.EMPLOYEE_POST" />
+          <EntitySet Name="LEAVEs" EntityType="Model.LEAVE" />
+          <EntitySet Name="MONTHLY_STATEMENT" EntityType="Model.MONTHLY_STATEMENT" />
+          <EntitySet Name="PAYOUTs" EntityType="Model.PAYOUT" />
+          <EntitySet Name="POST_LIST" EntityType="Model.POST_LIST" />
+          <EntitySet Name="ROLES" EntityType="Model.ROLE" />
+          <EntitySet Name="USERROLES" EntityType="Model.USERROLE" />
+          <EntitySet Name="WORK_IN_OUT" EntityType="Model.WORK_IN_OUT" />
+          <AssociationSet Name="SYS_C0010811" Association="Model.SYS_C0010811">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="ATTENDANCE" EntitySet="ATTENDANCEs" />
+          </AssociationSet>
+          <AssociationSet Name="CONSTRAINT8" Association="Model.CONSTRAINT8">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="ATTENDANCE_CLAIM" EntitySet="ATTENDANCE_CLAIM" />
+          </AssociationSet>
+          <AssociationSet Name="CONSTRAINT3" Association="Model.CONSTRAINT3">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="MONTHLY_STATEMENT" EntitySet="MONTHLY_STATEMENT" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010806" Association="Model.SYS_C0010806">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="EMPLOYEE_POST" EntitySet="EMPLOYEE_POST" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010809" Association="Model.SYS_C0010809">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="LEAVE" EntitySet="LEAVEs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010813" Association="Model.SYS_C0010813">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="WORK_IN_OUT" EntitySet="WORK_IN_OUT" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010817" Association="Model.SYS_C0010817">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="PAYOUT" EntitySet="PAYOUTs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010821" Association="Model.SYS_C0010821">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="USERROLE" EntitySet="USERROLES" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0010820" Association="Model.SYS_C0010820">
+            <End Role="ROLE" EntitySet="ROLES" />
+            <End Role="USERROLE" EntitySet="USERROLES" />
+          </AssociationSet>
+          <EntitySet Name="HOLIDAY_LIST" EntityType="Model.HOLIDAY_LIST" />
+          <EntitySet Name="LEAVEDAYS" EntityType="Model.LEAVEDAY" />
+          <AssociationSet Name="CONSTRAINT11" Association="Model.CONSTRAINT11">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="LEAVEDAY" EntitySet="LEAVEDAYS" />
+          </AssociationSet>
+          <EntitySet Name="LEAVES_TYPES" EntityType="Model.LEAVES_TYPES" />
+        </EntityContainer>
+        <EntityType Name="ALLOWANCE">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="POST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WOH" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="WONS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="MEAL_ALLOWANCE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="WOSH" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ATTENDANCE">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="AID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ATTEND_DATE" Type="DateTime" />
+          <Property Name="LOGIN_TIME" Type="DateTime" Precision="6" />
+          <Property Name="LOGOUT_TIME" Type="DateTime" Precision="6" />
+          <Property Name="SHIFT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TOTAL_TIME" Type="DateTime" Precision="6" />
+          <Property Name="LOGOUT_DATE" Type="DateTime" Precision="6" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.SYS_C0010811" FromRole="ATTENDANCE" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="ATTENDANCE_CLAIM">
+          <Key>
+            <PropertyRef Name="CAID" />
+          </Key>
+          <Property Name="CAID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LOGIN_DATE" Type="DateTime" />
+          <Property Name="LOGIN_TIME" Type="DateTime" Precision="6" />
+          <Property Name="LOGOUT_DATE" Type="DateTime" />
+          <Property Name="LOGOUT_TIME" Type="DateTime" Precision="6" />
+          <Property Name="REASON" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.CONSTRAINT8" FromRole="ATTENDANCE_CLAIM" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FULL_NAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASSCODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ATTENDANCEs" Relationship="Model.SYS_C0010811" FromRole="EMPLOYEE" ToRole="ATTENDANCE" />
+          <NavigationProperty Name="ATTENDANCE_CLAIM" Relationship="Model.CONSTRAINT8" FromRole="EMPLOYEE" ToRole="ATTENDANCE_CLAIM" />
+          <NavigationProperty Name="MONTHLY_STATEMENT" Relationship="Model.CONSTRAINT3" FromRole="EMPLOYEE" ToRole="MONTHLY_STATEMENT" />
+          <NavigationProperty Name="EMPLOYEE_POST" Relationship="Model.SYS_C0010806" FromRole="EMPLOYEE" ToRole="EMPLOYEE_POST" />
+          <NavigationProperty Name="LEAVEs" Relationship="Model.SYS_C0010809" FromRole="EMPLOYEE" ToRole="LEAVE" />
+          <NavigationProperty Name="WORK_IN_OUT" Relationship="Model.SYS_C0010813" FromRole="EMPLOYEE" ToRole="WORK_IN_OUT" />
+          <NavigationProperty Name="PAYOUTs" Relationship="Model.SYS_C0010817" FromRole="EMPLOYEE" ToRole="PAYOUT" />
+          <NavigationProperty Name="USERROLES" Relationship="Model.SYS_C0010821" FromRole="EMPLOYEE" ToRole="USERROLE" />
+          <NavigationProperty Name="LEAVEDAYS" Relationship="Model.CONSTRAINT11" FromRole="EMPLOYEE" ToRole="LEAVEDAY" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE_POST">
+          <Key>
+            <PropertyRef Name="EPOID" />
+          </Key>
+          <Property Name="EPOID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="POST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.SYS_C0010806" FromRole="EMPLOYEE_POST" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="LEAVE">
+          <Key>
+            <PropertyRef Name="LID" />
+          </Key>
+          <Property Name="LID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LEAVE_TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FROM_DATE" Type="DateTime" />
+          <Property Name="TO_DATE" Type="DateTime" />
+          <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="REASON" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.SYS_C0010809" FromRole="LEAVE" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="MONTHLY_STATEMENT">
+          <Key>
+            <PropertyRef Name="MON_REC_ID" />
+          </Key>
+          <Property Name="MON_REC_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="MONTH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TOTALLEAVEDAYS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TOTALWORKINGHRS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TOTALNIGHTSHIFTS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TOTALWOH" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.CONSTRAINT3" FromRole="MONTHLY_STATEMENT" ToRole="EMPLOYEE" />
+          <Property Name="TOTALWOSH" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TOTALMEALALLOW" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="PAYOUT">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PAY_MONTH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WOH_DAY" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NIGHT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TOTAL_SALARY" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LEAVE_DAYS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="WORKING_HOUR" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.SYS_C0010817" FromRole="PAYOUT" ToRole="EMPLOYEE" />
+          <Property Name="MEALALLOWANCE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="WOSH_DAY" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="POST_LIST">
+          <Key>
+            <PropertyRef Name="POID" />
+          </Key>
+          <Property Name="POST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BASIC_SALARY" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="POID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ROLEID" />
+          </Key>
+          <Property Name="ROLEID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ROLENAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USERROLES" Relationship="Model.SYS_C0010820" FromRole="ROLE" ToRole="USERROLE" />
+        </EntityType>
+        <EntityType Name="USERROLE">
+          <Key>
+            <PropertyRef Name="USERROLESID" />
+          </Key>
+          <Property Name="USERROLESID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ROLEID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.SYS_C0010821" FromRole="USERROLE" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="ROLE" Relationship="Model.SYS_C0010820" FromRole="USERROLE" ToRole="ROLE" />
+        </EntityType>
+        <EntityType Name="WORK_IN_OUT">
+          <Key>
+            <PropertyRef Name="IN_OUT_ID" />
+          </Key>
+          <Property Name="IN_OUT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="OUT_ON_WORK" Type="DateTime" Precision="6" />
+          <Property Name="RETURN_INSIDE" Type="DateTime" Precision="6" />
+          <Property Name="REASON" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.SYS_C0010813" FromRole="WORK_IN_OUT" ToRole="EMPLOYEE" />
+        </EntityType>
+        <Association Name="SYS_C0010811">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.ATTENDANCE" Role="ATTENDANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="ATTENDANCE">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONSTRAINT8">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.ATTENDANCE_CLAIM" Role="ATTENDANCE_CLAIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="ATTENDANCE_CLAIM">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONSTRAINT3">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.MONTHLY_STATEMENT" Role="MONTHLY_STATEMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="MONTHLY_STATEMENT">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010806">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.EMPLOYEE_POST" Role="EMPLOYEE_POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="EMPLOYEE_POST">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010809">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.LEAVE" Role="LEAVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="LEAVE">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010813">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.WORK_IN_OUT" Role="WORK_IN_OUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="WORK_IN_OUT">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010817">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.PAYOUT" Role="PAYOUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="PAYOUT">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010821">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.USERROLE" Role="USERROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="USERROLE">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0010820">
+          <End Type="Model.ROLE" Role="ROLE" Multiplicity="0..1" />
+          <End Type="Model.USERROLE" Role="USERROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLEID" />
+            </Principal>
+            <Dependent Role="USERROLE">
+              <PropertyRef Name="ROLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HOLIDAY_LIST">
+          <Key>
+            <PropertyRef Name="HID" />
+          </Key>
+          <Property Name="HID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="H_DATE" Type="DateTime" />
+          <Property Name="OCCATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LEAVEDAY">
+          <Key>
+            <PropertyRef Name="LDID" />
+          </Key>
+          <Property Name="LDID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LEAVETYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DAYS" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Model.CONSTRAINT11" FromRole="LEAVEDAY" ToRole="EMPLOYEE" />
+        </EntityType>
+        <Association Name="CONSTRAINT11">
+          <End Type="Model.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+          <End Type="Model.LEAVEDAY" Role="LEAVEDAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="LEAVEDAY">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LEAVES_TYPES">
+          <Key>
+            <PropertyRef Name="LTID" />
+          </Key>
+          <Property Name="LTID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="LEAVE_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DAYS_OFF" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="OracledbEntities">
+          <EntitySetMapping Name="ALLOWANCEs">
+            <EntityTypeMapping TypeName="Model.ALLOWANCE">
+              <MappingFragment StoreEntitySet="ALLOWANCE">
+                <ScalarProperty Name="WOSH" ColumnName="WOSH" />
+                <ScalarProperty Name="AID" ColumnName="AID" />
+                <ScalarProperty Name="MEAL_ALLOWANCE" ColumnName="MEAL_ALLOWANCE" />
+                <ScalarProperty Name="WONS" ColumnName="WONS" />
+                <ScalarProperty Name="WOH" ColumnName="WOH" />
+                <ScalarProperty Name="POST" ColumnName="POST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATTENDANCEs">
+            <EntityTypeMapping TypeName="Model.ATTENDANCE">
+              <MappingFragment StoreEntitySet="ATTENDANCE">
+                <ScalarProperty Name="LOGOUT_DATE" ColumnName="LOGOUT_DATE" />
+                <ScalarProperty Name="TOTAL_TIME" ColumnName="TOTAL_TIME" />
+                <ScalarProperty Name="SHIFT" ColumnName="SHIFT" />
+                <ScalarProperty Name="LOGOUT_TIME" ColumnName="LOGOUT_TIME" />
+                <ScalarProperty Name="LOGIN_TIME" ColumnName="LOGIN_TIME" />
+                <ScalarProperty Name="ATTEND_DATE" ColumnName="ATTEND_DATE" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="AID" ColumnName="AID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATTENDANCE_CLAIM">
+            <EntityTypeMapping TypeName="Model.ATTENDANCE_CLAIM">
+              <MappingFragment StoreEntitySet="ATTENDANCE_CLAIM">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="REASON" ColumnName="REASON" />
+                <ScalarProperty Name="LOGOUT_TIME" ColumnName="LOGOUT_TIME" />
+                <ScalarProperty Name="LOGOUT_DATE" ColumnName="LOGOUT_DATE" />
+                <ScalarProperty Name="LOGIN_TIME" ColumnName="LOGIN_TIME" />
+                <ScalarProperty Name="LOGIN_DATE" ColumnName="LOGIN_DATE" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="CAID" ColumnName="CAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEEs">
+            <EntityTypeMapping TypeName="Model.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEE">
+                <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+                <ScalarProperty Name="PASSCODE" ColumnName="PASSCODE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEE_POST">
+            <EntityTypeMapping TypeName="Model.EMPLOYEE_POST">
+              <MappingFragment StoreEntitySet="EMPLOYEE_POST">
+                <ScalarProperty Name="POST" ColumnName="POST" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="EPOID" ColumnName="EPOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEAVEs">
+            <EntityTypeMapping TypeName="Model.LEAVE">
+              <MappingFragment StoreEntitySet="LEAVE">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="REASON" ColumnName="REASON" />
+                <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+                <ScalarProperty Name="TO_DATE" ColumnName="TO_DATE" />
+                <ScalarProperty Name="FROM_DATE" ColumnName="FROM_DATE" />
+                <ScalarProperty Name="LEAVE_TYPE" ColumnName="LEAVE_TYPE" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="LID" ColumnName="LID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONTHLY_STATEMENT">
+            <EntityTypeMapping TypeName="Model.MONTHLY_STATEMENT">
+              <MappingFragment StoreEntitySet="MONTHLY_STATEMENT">
+                <ScalarProperty Name="TOTALMEALALLOW" ColumnName="TOTALMEALALLOW" />
+                <ScalarProperty Name="TOTALWOSH" ColumnName="TOTALWOSH" />
+                <ScalarProperty Name="TOTALWOH" ColumnName="TOTALWOH" />
+                <ScalarProperty Name="TOTALNIGHTSHIFTS" ColumnName="TOTALNIGHTSHIFTS" />
+                <ScalarProperty Name="TOTALWORKINGHRS" ColumnName="TOTALWORKINGHRS" />
+                <ScalarProperty Name="TOTALLEAVEDAYS" ColumnName="TOTALLEAVEDAYS" />
+                <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="MON_REC_ID" ColumnName="MON_REC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYOUTs">
+            <EntityTypeMapping TypeName="Model.PAYOUT">
+              <MappingFragment StoreEntitySet="PAYOUT">
+                <ScalarProperty Name="WOSH_DAY" ColumnName="WOSH_DAY" />
+                <ScalarProperty Name="MEALALLOWANCE" ColumnName="MEALALLOWANCE" />
+                <ScalarProperty Name="WORKING_HOUR" ColumnName="WORKING_HOUR" />
+                <ScalarProperty Name="LEAVE_DAYS" ColumnName="LEAVE_DAYS" />
+                <ScalarProperty Name="TOTAL_SALARY" ColumnName="TOTAL_SALARY" />
+                <ScalarProperty Name="NIGHT" ColumnName="NIGHT" />
+                <ScalarProperty Name="WOH_DAY" ColumnName="WOH_DAY" />
+                <ScalarProperty Name="PAY_MONTH" ColumnName="PAY_MONTH" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POST_LIST">
+            <EntityTypeMapping TypeName="Model.POST_LIST">
+              <MappingFragment StoreEntitySet="POST_LIST">
+                <ScalarProperty Name="POID" ColumnName="POID" />
+                <ScalarProperty Name="BASIC_SALARY" ColumnName="BASIC_SALARY" />
+                <ScalarProperty Name="POST" ColumnName="POST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="Model.ROLE">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERROLES">
+            <EntityTypeMapping TypeName="Model.USERROLE">
+              <MappingFragment StoreEntitySet="USERROLES">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+                <ScalarProperty Name="USERROLESID" ColumnName="USERROLESID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WORK_IN_OUT">
+            <EntityTypeMapping TypeName="Model.WORK_IN_OUT">
+              <MappingFragment StoreEntitySet="WORK_IN_OUT">
+                <ScalarProperty Name="REASON" ColumnName="REASON" />
+                <ScalarProperty Name="RETURN_INSIDE" ColumnName="RETURN_INSIDE" />
+                <ScalarProperty Name="OUT_ON_WORK" ColumnName="OUT_ON_WORK" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="IN_OUT_ID" ColumnName="IN_OUT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOLIDAY_LIST">
+            <EntityTypeMapping TypeName="Model.HOLIDAY_LIST">
+              <MappingFragment StoreEntitySet="HOLIDAY_LIST">
+                <ScalarProperty Name="OCCATION" ColumnName="OCCATION" />
+                <ScalarProperty Name="H_DATE" ColumnName="H_DATE" />
+                <ScalarProperty Name="HID" ColumnName="HID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEAVEDAYS">
+            <EntityTypeMapping TypeName="Model.LEAVEDAY">
+              <MappingFragment StoreEntitySet="LEAVEDAYS">
+                <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+                <ScalarProperty Name="LEAVETYPE" ColumnName="LEAVETYPE" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="LDID" ColumnName="LDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEAVES_TYPES">
+            <EntityTypeMapping TypeName="Model.LEAVES_TYPES">
+              <MappingFragment StoreEntitySet="LEAVES_TYPES">
+                <ScalarProperty Name="DAYS_OFF" ColumnName="DAYS_OFF" />
+                <ScalarProperty Name="LEAVE_NAME" ColumnName="LEAVE_NAME" />
+                <ScalarProperty Name="LTID" ColumnName="LTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

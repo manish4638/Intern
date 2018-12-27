@@ -1,0 +1,132 @@
+﻿@model Attendance.Models.Viewmodel.ManageEmployeeViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+@*<link href="~/Content/Changepassword.css" rel="stylesheet" />*@
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+
+
+            @*<div class="login-form">*@
+            <h2>Create</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>ManageEmployeeViewModel</h4>
+                    @ViewBag.message
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.EID, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.EID)
+                            @Html.ValidationMessageFor(model => model.EID)
+                        </div>
+                    </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FULL_NAME, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.FULL_NAME)
+                        @Html.TextBoxFor(model => model.FULL_NAME, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ADDRESS, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.ADDRESS)
+                        @Html.TextBoxFor(model => model.ADDRESS, new { @class = "form-control" })
+
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GENDER, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.GENDER)
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(model => model.GENDER, value: "M")<span>Male</span>
+                            &nbsp;
+                            @Html.RadioButtonFor(model => model.GENDER, value: "F")<span>Female</span>
+                            &nbsp;
+                            @Html.RadioButtonFor(model => model.GENDER, value: "O")<span>Other</span>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CONTACT, new { @class = "control-label col-md-2" })
+                        <span>(eg:9800021223)</span>
+                        @Html.ValidationMessageFor(model => model.CONTACT)
+                        @Html.TextBoxFor(model => model.CONTACT, new { @class = "form-control" })
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EMAIL, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.EMAIL)
+
+                        @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control" })
+
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PASSCODE, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.PASSCODE)
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(model => model.PASSCODE, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ROLENAME, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.ROLENAME)
+                        @Html.DropDownListFor(model => model.ROLENAME, ViewBag.Rolelist as SelectList, "select Role", new { @class = "form-control" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.POST, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.POST)
+                        @Html.DropDownListFor(model => model.POST, ViewBag.Postlist as SelectList, "select Post", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR1, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR1)
+                        @Html.DropDownListFor(model => model.SUPERVISOR1, ViewBag.supvlist as SelectList, "SUPERVISOR", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR2, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR2)
+                        @Html.DropDownListFor(model => model.SUPERVISOR2, ViewBag.supvlist as SelectList, "SUPERVISOR", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR3, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR3)
+                        @Html.DropDownListFor(model => model.SUPERVISOR3, ViewBag.supvlist as SelectList, "SUPERVISOR", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR4, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR4)
+                        @Html.DropDownListFor(model => model.SUPERVISOR4, ViewBag.supvlist as SelectList, "SUPERVISOR", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SUPERVISOR5, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.SUPERVISOR5)
+                        @Html.DropDownListFor(model => model.SUPERVISOR5, ViewBag.supvlist as SelectList, "SUPERVISOR", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group" style="padding-top:10px">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                            <input type="button" value="cancel" class="btn btn-default" onclick="location.href='@Url.Action("list", "Employeemanage")'" />
+                        </div>
+                    </div>
+                </div>
+            }
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+                @Scripts.Render("~/bundles/custom-validator")
+            }
+
+            @*</div>*@
+        </div>
+    </div>
+</div>

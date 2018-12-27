@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Attendance.Models.EMPLOYEE>
+
+@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+@*<style>
+        Table{
+            border-style: solid;
+            border-color: black;
+        }
+    </style>*@
+
+
+<div class="content">
+
+
+    <h2 style="text-align:center">List of the Employees</h2>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <p>
+            <button style="font-size:20px" onclick="location.href='@Url.Action("Create", "EmployeeManage")'">
+                <img src="~/Images/Icon/create.png" />
+                <span>Create</span>
+            </button>
+            
+        </p>
+    }
+    <table style="align-content:center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FULL_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GENDER)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.PASSCODE)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CONTACT)
+            </th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th></th>
+            }
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FULL_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ADDRESS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GENDER)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMAIL)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.PASSCODE)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.CONTACT)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        <button style="font-size:18px" onclick="location.href='@Url.Action("Edit", "EmployeeManage", new { id = item.EID })'">
+                            <img src="~/Images/Icon/Edit.png" />
+                            <span>Edit</span>                            
+                        </button>
+                        <button style="font-size: 18px" onclick="location.href='@Url.Action("Details", "EmployeeManage", new { id = item.EID })'">
+                            
+                            <img src="~/Images/Icon/Detail.png" />
+                            <span>Details</span>
+                        </button>
+                        <button style="font-size: 18px" onclick="location.href='@Url.Action("Delete", "EmployeeManage", new { id = item.EID })'">
+                            <img src="~/Images/Icon/Delete.png" />
+                            <span>Delete</span>
+                        </button>                        
+                        
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>

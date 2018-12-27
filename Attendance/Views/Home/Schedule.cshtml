@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Attendance.Models.ATTENDANCE>
+
+
+@{
+	ViewBag.Title = "Schedule";
+	Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+	<h2>Schedule</h2>
+
+
+	<div>
+		<table style="width:100%">
+			<tr style="width:100%">
+				<td>
+					Eid:@Session["Eid"]
+				</td>
+				<td>
+					Email:@Session["Emailid"]                 
+				</td>
+			</tr>
+			<tr style="width:100%">
+				<td>
+                    
+				  Name:@Session["Fullname"]
+				</td>
+				<td width="258px">
+					Date : @DateTime.Now
+				</td>
+				
+			</tr>
+		</table>
+
+	</div>
+
+
+	<div>
+
+		<table>
+			<tr style="background-color:none">
+				<td class="control-label col-md-2">                    
+					@using (Html.BeginForm("Login_time", "Attendance"))
+					{
+						<input type="submit" value="Login" class="btn btn-default" />
+					}
+
+				</td>
+				<td class="control-label col-md-2">
+				   <input type="button" value="Out on Work" class="btn btn-default" onclick="location.href='@Url.Action("workout", "Attendance")'" />
+				</td>
+
+				<td class="control-label col-md-2">
+				@using (Html.BeginForm("workin", "Attendance"))
+				{
+					<input type="submit" value="Return Inside" class="btn btn-default" />
+				}
+				</td>
+
+				<td class="control-label col-md-2">
+					@using (Html.BeginForm("logout_time", "Attendance"))
+					{
+						<input type="submit" value="logout" class="btn btn-default" />
+					}
+				</td>
+				
+			</tr>
+		</table>
+
+	</div>
+	<div>
+
+	</div>
+
+
+
+	<div>
+		<table class="table">
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.ATTEND_DATE)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.LOGIN_TIME)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.LOGOUT_DATE)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.LOGOUT_TIME)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.SHIFT)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.TOTAL_TIME)
+				</th>
+				
+			</tr>
+
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.ATTEND_DATE)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.LOGIN_TIME)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.LOGOUT_DATE)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.LOGOUT_TIME)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.SHIFT)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.TOTAL_TIME)
+					</td>
+				</tr>
+			}
+
+		</table>
+		@ViewBag.Message
+	</div>
+	@*@if (ViewBag.Message != null)
+	{
+		<script type="text/javascript">
+			window.onload = function () {
+				alert("@ViewBag.Message");
+			}
+		</script>
+        
+	}*@
+    @if(ViewBag.alert!=null)
+    {
+        <script>
+            alert('@ViewBag.alert');
+        </script>
+    }
+</div>

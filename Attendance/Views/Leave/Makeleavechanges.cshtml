@@ -1,0 +1,162 @@
+﻿@model Attendance.Models.LEAVE
+
+@{
+    ViewBag.Title = "Makeleavechanges";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>Makeleavechanges</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>LEAVE</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LID, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.LID, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.LID)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EID, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.EID, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.EID)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LEAVE_TYPE, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.LEAVE_TYPE, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.LEAVE_TYPE)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.REQUESTED_FROM, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.REQUESTED_FROM, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.REQUESTED_FROM)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.REQUESTED_TO, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.REQUESTED_TO, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.REQUESTED_TO)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FROM_DATE, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.FROM_DATE,new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.FROM_DATE)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TO_DATE, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.TO_DATE, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TO_DATE)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DAYS, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.DAYS, new { @class = "form-control" ,@readonly="readonly"})
+                            @Html.ValidationMessageFor(model => model.DAYS)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.REASON, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.REASON, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.REASON)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.STATUS, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.STATUS, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.STATUS)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.COMENT, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.COMENT,new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.COMENT)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Approved/Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var unavailableDates = ["12/12/2018", "12/15/2018", "12/25/2018"];
+    //var unavailableDates = ocdate;
+
+    function unavailable(date) {
+        dmy = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+        if ($.inArray(dmy, unavailableDates) == -1) {
+            return [date.getDay() == 0 || date.getDay() == 6 ? false : true];
+        }
+        else {
+            return [false, "", "Holiday"];
+        }
+    }
+
+    $(function () {
+        $("#FROM_DATE").datepicker({
+
+            minDate: 0,
+            //maxDate: 'REQUESTED_TO',
+            showButtonPanel: true,
+            beforeShowDay: unavailable,
+            onClose: function (selectedDate) {
+                $("#TO_DATE").datepicker("option", "minDate", selectedDate);
+            }
+        });
+
+
+        $("#TO_DATE").datepicker({
+
+            minDate: 0,           
+            showButtonPanel: true,
+            beforeShowDay: unavailable,
+            onClose: function (selectedDate) {
+                $("#FROM_DATE").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+    });
+</script>
+@if (ViewBag.alert != null)
+{
+    <script>alert('@ViewBag.alert');</script>
+}

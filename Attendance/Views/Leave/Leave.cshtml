@@ -1,0 +1,191 @@
+﻿@model Attendance.Models.LEAVE
+
+@{
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script>
+    
+    var unavailableDates = ["12/12/2018", "12/15/2018", "12/25/2018"];
+    //var unavailableDates = ocdate;
+
+    function unavailable(date) {
+        dmy = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+        if ($.inArray(dmy, unavailableDates) == -1) {
+            return [date.getDay() == 0 || date.getDay() == 6 ? false : true];
+        }
+        else {
+            return [false, "", "Holiday"];
+        }
+    }
+
+    $(function () {
+        $("#REQUESTED_FROM").datepicker({
+
+            minDate: '0',
+            showButtonPanel: true,
+            beforeShowDay: unavailable,
+            onClose: function (selectedDate) {
+                $("#REQUESTED_TO").datepicker("option", "minDate", selectedDate);
+            }
+        });
+
+
+        $("#REQUESTED_TO").datepicker({
+
+            minDate: '0',
+            showButtonPanel: true,
+            beforeShowDay: unavailable,
+            onClose: function (selectedDate) {
+                $("#REQUESTED_FROM").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+    });
+
+    /*
+    $(function ()
+    {
+
+        $("#FROM_DATE").datepicker({
+
+            minDate: '0',
+            showButtonPanel: true,
+            beforeShowDay: $.datepicker.noWeekends,
+            onClose: function (selectedDate) {
+                $("#TO_DATE").datepicker("option", "minDate", selectedDate);
+            }
+        });
+
+        $("#TO_DATE").datepicker({
+
+            minDate: '0',
+            showButtonPanel: true,
+            beforeShowDay: $.datepicker.noWeekends,
+
+            onClose: function (selectedDate) {
+                $("#FROM_DATE").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+
+
+
+    });*/
+</script>
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>Apply Leave</h2>
+            @*@ViewBag.Dates*@
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LEAVE_TYPE, new { @class = "control-label col-md-2" })
+                        @Html.DropDownListFor(model => model.LEAVE_TYPE, ViewBag.leavelst as SelectList, "--select leave--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LEAVE_TYPE)
+
+
+                        @*<div class="col-md-10">
+                                @Html.RadioButtonFor(m => m.LEAVE_TYPE, value: "casualleave")<span>Casual Leave</span>
+                                <br />
+                                @Html.RadioButtonFor(m => m.LEAVE_TYPE, value: "Home leave")<span>Home Leave</span>
+                                <br />
+                                @Html.RadioButtonFor(m => m.LEAVE_TYPE, value: "Sick leave")<span>Sick Leave</span>
+
+                                @Html.ValidationMessageFor(model => model.LEAVE_TYPE)
+                            </div>*@
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.REQUESTED_FROM, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.REQUESTED_FROM)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.REQUESTED_FROM, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.REQUESTED_TO, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.REQUESTED_TO)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.REQUESTED_TO, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.REASON, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.REASON)
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.REASON, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-default" />
+                            <input type="button" value="cancel" class="btn btn-default" onclick="location.href='@Url.Action("Schedule", "Home")'" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+    <table>
+        @{
+            <tr>
+@foreach (var lh in ViewBag.leavehistory)
+{
+                <th>
+                    @lh.LEAVETYPE
+                </th>
+                
+}
+            </tr>
+
+
+            if (ViewBag.leavehistory != null)
+            {
+                <tr>
+                    @foreach (var lh in ViewBag.leavehistory)
+                    {
+
+                        <td>
+
+                            @lh.DAYS /
+
+                            @lh.DAYS_OFF
+                        </td>
+
+
+                    }
+                </tr>
+
+            }
+        }
+    </table>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script>alert('@ViewBag.Message');</script>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom-validator")
+}
+
+
+
+
+
+

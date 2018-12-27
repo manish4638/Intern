@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Attendance.Models.EMPLOYEE>
+
+@{
+    ViewBag.Title = "Manage Employee";
+    Layout = "~/Views/Shared/_master.cshtml";    
+}
+
+<div class="content">
+
+    <h2>List of Employees</h2>
+
+    <p class="btn btn-primary">
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table" style="">
+        <tr>
+            <th>
+                S.N.
+            </th>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Contact
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Email
+            </th>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <th>
+                    Action
+                </th>
+            }
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FULL_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ADDRESS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CONTACT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GENDER)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMAIL)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.PASSCODE)
+                    </td>*@
+                @*@if (User.IsInRole("Admin"))*@
+                {
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", new {  Eid=item.EID  }) |
+                        @Html.ActionLink("Details", "Details", new { Eid = item.EID }) |
+                        @Html.ActionLink("Delete", "Delete", new { Eid = item.EID })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>

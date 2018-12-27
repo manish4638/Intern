@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Attendance.Models.HOLIDAY_LIST>
+
+@{
+    ViewBag.Title = "Holidaylist";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+
+<div class="content">
+    <h2>Holidaylist</h2>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Holidaycreate", "home")
+        </p>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OCCATION)
+            </th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th></th>
+            }
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.H_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OCCATION)
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        using (Html.BeginForm("HolidayDelete", "Home", new { id=item.HID}))
+                        {
+                            <input type="submit" value="Delete" class="btn btn-default" />
+                        }
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

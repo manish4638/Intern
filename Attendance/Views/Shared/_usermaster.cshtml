@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>@ViewBag.Title</title>
+    <link href="/content/master.css" rel="stylesheet" id="bootstrap-css" />
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <a class="" href="/home/schedule">USer</a>
+            <a href="/home/second">News</a>
+            <a href="/home/third">Contact</a>
+            <a href="/home/fourth">About</a>
+            <a href="/home/second">News</a>
+            <a href="/home/third">Contact</a>
+            <a href="/home/fourth">About</a>
+            <a href="/home/second">News</a>
+            <a href="/home/third">Contact</a>
+            <a href="/home/fourth">About</a>
+            <a href="/home/second">News</a>
+        </div>        
+        @if (User.IsInRole("Admin"))
+        {
+            <div >
+                <a href="/home/second">Admin</a>
+                <a href="/home/third">Contact</a>
+                <a href="/home/fourth">About</a>
+                <a href="/home/second">News</a>
+                <a href="/home/third">Contact</a>
+                <a href="/home/fourth">About</a>
+                <a href="/home/second">News</a>
+                <a href="/home/second">News</a>
+                <a href="/home/third">Contact</a>
+                <a href="/home/fourth">About</a>
+                <a href="/home/second">News</a>
+                <a href="/home/third">Contact</a>
+                <a href="/home/fourth">bout</a>
+            </div>
+        }
+    </div>
+    <div class="navbar">
+        <a href="/home/schedule"><img src="/image/logo.png" class="logo" /></a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Dropdown
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/home/info">Profile</a>
+                <a href="/home/changepassword">Change Password</a>
+                <a href="/Account/LogOut">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+</body>
+</html>
+

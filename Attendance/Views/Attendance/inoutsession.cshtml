@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Attendance.Models.WORK_IN_OUT>
+
+@{
+    ViewBag.Title = "inoutsession";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+    <h2>In-Out Session</h2>
+
+
+    <table class="table">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.IN_OUT_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EID)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.OUT_ON_WORK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RETURN_INSIDE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REASON)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.IN_OUT_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EID)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.OUT_ON_WORK)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RETURN_INSIDE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REASON)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

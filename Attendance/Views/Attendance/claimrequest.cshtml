@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Attendance.Models.Viewmodel.ClaimAttendanceViewmodel>
+
+
+@{
+    ViewBag.Title = "claimrequest";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+<div class="content">
+
+    <h2>claimrequest</h2>
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CAID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGIN_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGIN_TIME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGOUT_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOGOUT_TIME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REASON)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STATUS)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CAID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGIN_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGIN_TIME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGOUT_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOGOUT_TIME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REASON)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.STATUS)
+                </td>
+                @if (item.STATUS == "Pending" && (item.flag == "1" || User.IsInRole("Admin")))
+                {                    
+                    <td>
+                        
+                        @using (Html.BeginForm("claimapproved", "Attendance", new { id = item.CAID }))
+                        {
+                           <button type="submit" style="font-size: 16px">
+                               <img src="~/Images/Icon/accept_check_confirmed_go_green_ok_positive_yes_icon_16.png" />
+                                <span>Approve</span>
+                            </button>
+                        }                       
+                        @using (Html.BeginForm("claimdeclined", "Attendance", new { id = item.CAID }))
+                        {
+                           <button type="submit" style="font-size: 16px">
+                               <img src="~/Images/Icon/cancelled_close_delete_exit_no_reject_wrong_icon_16.png" />                               
+                                <span>Decline</span>
+                            </button>
+                        }
+                    </td>
+                }
+
+                else
+                {
+                    <td></td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>

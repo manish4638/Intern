@@ -1,0 +1,195 @@
+﻿@model Attendance.Models.ATTENDANCE_CLAIM
+
+@{
+    ViewBag.Title = "Claimattendance";
+    Layout = "~/Views/Shared/_master.cshtml";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+
+        $("#LOGIN_DATE").datepicker({
+
+            maxDate: '0',
+            showButtonPanel: true,
+            beforeShowDay: $.datepicker.noWeekends,
+            onClose: function (selectedDate) {
+                $("#LOGOUT_DATE").datepicker("option", "minDate", selectedDate);
+            }
+        });
+
+        $("#LOGOUT_DATE").datepicker({
+
+            maxDate: '0',
+            showButtonPanel: true,
+            // beforeShowDay: $.datepicker.noWeekends,
+
+            onClose: function (selectedDate) {
+                $("#LOGIN_DATE").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+
+
+
+    }
+    );
+</script>
+
+<div class="content">
+    <div class="login-form">
+        <div class="main-div">
+            <h2>Claimattendance</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>ClaimAttendanceViewmodel</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+
+                    @* <div class="form-group">
+                            @Html.LabelFor(model => model.CAID, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.CAID)
+                                @Html.ValidationMessageFor(model => model.CAID)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EID, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.EID)
+                                @Html.ValidationMessageFor(model => model.EID)
+                            </div>
+                        </div>
+                    *@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LOGIN_DATE, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.LOGIN_DATE)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.LOGIN_DATE, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LOGIN_TIME, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.LOGIN_TIME)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.LOGIN_TIME, new { @type = "time", @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LOGOUT_DATE, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.LOGOUT_DATE)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.LOGOUT_DATE, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LOGOUT_TIME, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.LOGOUT_TIME)
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.LOGOUT_TIME, new { @type = "time", @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.REASON, new { @class = "control-label col-md-2" })
+                        @Html.ValidationMessageFor(model => model.REASON)
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.REASON, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.STATUS, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.STATUS)
+                                @Html.ValidationMessageFor(model => model.STATUS)
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                        <div>@ViewBag.Message</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    @*-----------------------------------------listing the data from Database------------------------------------------------*@
+    <div id="claimlist">
+        <table class="table">
+            @{
+                <tr>
+                    <th> Eid</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LOGIN_DATE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LOGIN_TIME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LOGOUT_DATE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LOGOUT_TIME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.REASON)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.STATUS)
+                    </th>
+
+                </tr>
+                if (ViewBag.claimlists != null)
+                {
+                    foreach (var lst in ViewBag.claimlists)
+                    {
+                        <tr>
+                            <td>
+
+                                @lst.EID
+                            </td>
+                            <td>
+
+                                @lst.LOGIN_DATE
+                            </td>
+                            <td>
+                                @lst.LOGIN_TIME
+                            </td>
+                            <td>
+                                @lst.LOGOUT_DATE
+                            </td>
+                            <td>
+                                @lst.LOGOUT_TIME
+                            </td>
+                            <td>
+                                @lst.REASON
+                            </td>
+                            <td>
+                                @lst.STATUS
+                            </td>
+
+                        </tr>
+                    }
+
+                }
+
+
+            }
+        </table>
+
+    </div>
+
+</div>
